@@ -1,6 +1,6 @@
 [project]
-name = "conpyguration"
-version = "0.1.0"
+name = "conpy"
+version = "0.1.0a0"
 description = "configure your python class"
 authors = [
     {name = "ZeroAct",email = "lhj5682@naver.com"}
@@ -19,4 +19,3 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"
 pre-commit = "^4.2.0"
-
