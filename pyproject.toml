@@ -6,8 +6,9 @@ authors = [
     {name = "ZeroAct",email = "lhj5682@naver.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.9,<4.0"
 dependencies = [
+    "docstring-parser (>=0.16,<0.17)",
 ]
 
 
