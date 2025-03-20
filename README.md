@@ -24,14 +24,15 @@ get_conpyguration(my_function)
 #             'value_type': <class 'conpyguration.types.UNDEFINED'>,
 #             'default': <class 'conpyguration.types.UNDEFINED'>,
 #             'description': <class 'conpyguration.types.UNDEFINED'>,
-#             'choices': <class 'conpyguration.types.UNDEFINED'>},
-#             'b': {
-#                 'value_type': <class 'conpyguration.types.UNDEFINED'>,
-#                 'default': 1,
-#                 'description': <class 'conpyguration.types.UNDEFINED'>,
-#                 'choices': <class 'conpyguration.types.UNDEFINED'>
-#             }
+#             'choices': <class 'conpyguration.types.UNDEFINED'>
 #         },
+#         'b': {
+#             'value_type': <class 'conpyguration.types.UNDEFINED'>,
+#             'default': 1,
+#             'description': <class 'conpyguration.types.UNDEFINED'>,
+#             'choices': <class 'conpyguration.types.UNDEFINED'>
+#         },
+#     },
 #     'return_spec': {
 #         'value_type': <class 'int'>,
 #         'description': <class 'conpyguration.types.UNDEFINED'>
