@@ -3,8 +3,8 @@ from typing import Literal, Union
 
 import pytest
 
-from conpy.conpy import get_conpyguration
-from conpy.types import UNDEFINED
+from conpyguration.conpy import get_conpyguration
+from conpyguration.types import UNDEFINED
 
 
 def dummy_func_nothing():

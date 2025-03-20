@@ -3,7 +3,7 @@ from typing import Any, Literal, Union, get_args, get_origin
 
 import docstring_parser
 
-from conpy.types import (
+from conpyguration.types import (
     UNDEFINED,
     ArgumentSpec,
     FunctionSpec,

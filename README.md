@@ -3,38 +3,38 @@ Configure your Python function or class with ConPYguration. ConPYguration is a P
 
 ## Installation
 ```bash
-pip install conpy
+pip install conpyguration
 ```
 
 ## Usage
 ### Basic Function
 ```python
-from conpy import get_conpyguration
+from conpyguration import get_conpyguration
 
 def my_function(a, b=1) -> int:
     return a + b
 
 get_conpyguration(my_function)
 # {
-#     'description': <class 'conpy.types.UNDEFINED'>,
+#     'description': <class 'conpyguration.types.UNDEFINED'>,
 #     'module_name': '__main__',
 #     'function_name': 'my_function',
 #     'arguments': {
 #         'a': {
-#             'value_type': <class 'conpy.types.UNDEFINED'>,
-#             'default': <class 'conpy.types.UNDEFINED'>,
-#             'description': <class 'conpy.types.UNDEFINED'>,
-#             'choices': <class 'conpy.types.UNDEFINED'>},
+#             'value_type': <class 'conpyguration.types.UNDEFINED'>,
+#             'default': <class 'conpyguration.types.UNDEFINED'>,
+#             'description': <class 'conpyguration.types.UNDEFINED'>,
+#             'choices': <class 'conpyguration.types.UNDEFINED'>},
 #             'b': {
-#                 'value_type': <class 'conpy.types.UNDEFINED'>,
+#                 'value_type': <class 'conpyguration.types.UNDEFINED'>,
 #                 'default': 1,
-#                 'description': <class 'conpy.types.UNDEFINED'>,
-#                 'choices': <class 'conpy.types.UNDEFINED'>
+#                 'description': <class 'conpyguration.types.UNDEFINED'>,
+#                 'choices': <class 'conpyguration.types.UNDEFINED'>
 #             }
 #         },
 #     'return_spec': {
 #         'value_type': <class 'int'>,
-#         'description': <class 'conpy.types.UNDEFINED'>
+#         'description': <class 'conpyguration.types.UNDEFINED'>
 #     }
 # }
 ```
@@ -62,15 +62,15 @@ get_conpyguration(my_function)
 #     'arguments': {
 #         'a': {
 #             'value_type': <class 'int'>,
-#             'default': <class 'conpy.types.UNDEFINED'>,
+#             'default': <class 'conpyguration.types.UNDEFINED'>,
 #             'description': 'The first number.',
-#             'choices': <class 'conpy.types.UNDEFINED'>
+#             'choices': <class 'conpyguration.types.UNDEFINED'>
 #         },
 #         'b': {
 #             'value_type': <class 'int'>,
 #             'default': 1,
 #             'description': 'The second number. Defaults to 1.',
-#             'choices': <class 'conpy.types.UNDEFINED'>
+#             'choices': <class 'conpyguration.types.UNDEFINED'>
 #         }
 #     },
 #     'return_spec': {
@@ -89,18 +89,18 @@ def my_function(a: Union[int, float]):
 
 get_conpyguration(my_function)
 # {
-#     'description': <class 'conpy.types.UNDEFINED'>,
+#     'description': <class 'conpyguration.types.UNDEFINED'>,
 #     'module_name': '__main__',
 #     'function_name': 'my_function',
 #     'arguments': {
 #         'a': {
 #             'value_type': (<class 'int'>, <class 'float'>),
-#             'default': <class 'conpy.types.UNDEFINED'>,
-#             'description': <class 'conpy.types.UNDEFINED'>,
-#             'choices': <class 'conpy.types.UNDEFINED'>
+#             'default': <class 'conpyguration.types.UNDEFINED'>,
+#             'description': <class 'conpyguration.types.UNDEFINED'>,
+#             'choices': <class 'conpyguration.types.UNDEFINED'>
 #         }
 #     },
-#     'return_spec': <class 'conpy.types.UNDEFINED'>
+#     'return_spec': <class 'conpyguration.types.UNDEFINED'>
 # }
 ```
 
@@ -113,18 +113,18 @@ def my_function(a: Literal[1, 2, 3]):
 
 get_conpyguration(my_function)
 # {
-#     'description': <class 'conpy.types.UNDEFINED'>,
+#     'description': <class 'conpyguration.types.UNDEFINED'>,
 #     'module_name': '__main__',
 #     'function_name': 'my_function',
 #     'arguments': {
 #         'a': {
 #             'value_type': typing.Literal,
-#             'default': <class 'conpy.types.UNDEFINED'>,
-#             'description': <class 'conpy.types.UNDEFINED'>,
+#             'default': <class 'conpyguration.types.UNDEFINED'>,
+#             'description': <class 'conpyguration.types.UNDEFINED'>,
 #             'choices': (1, 2, 3)
 #         }
 #     },
-#     'return_spec': <class 'conpy.types.UNDEFINED'>
+#     'return_spec': <class 'conpyguration.types.UNDEFINED'>
 # }
 ```
 

@@ -2,7 +2,7 @@ from typing import Literal, Union
 
 import pytest
 
-from conpy.conpy import parse_type
+from conpyguration.conpy import parse_type
 
 
 def test_plain_type():
