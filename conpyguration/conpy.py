@@ -52,7 +52,25 @@ def parse_type(value_type: type) -> Union[type, tuple, list]:
     return value_type
 
 
-def get_conpyguration(func: Any, docstring: str = None) -> FunctionSpec:
+def get_conpyguration(obj: Any, docstring: str = None) -> Union[FunctionSpec, ClassSpec]:
+    """Get the conpyguration of a function or class
+
+    Args:
+        obj (Any): The function or class to get the conpyguration of
+        docstring (str): The docstring of the function or class
+
+    Returns:
+        Union[FunctionSpec, ClassSpec]: The conpyguration of the function or class
+    """
+    if inspect.isfunction(obj):
+        return get_function_conpyguration(obj, docstring)
+    elif inspect.isclass(obj):
+        return get_class_conpyguration(obj, docstring)
+    else:
+        raise TypeError("The input should be a function or a class")
+
+
+def get_function_conpyguration(func: Any, docstring: str = None) -> FunctionSpec:
     """Get the conpyguration of a function or class
 
     Args:
@@ -134,7 +152,7 @@ def get_class_conpyguration(cls: Any, docstring: str = None) -> ClassSpec:
 
     docstring = docstring or cls.__doc__ or cls.__init__.__doc__ or UNDEFINED
 
-    init_arguments = get_conpyguration(cls.__init__, docstring)
+    init_arguments = get_function_conpyguration(cls.__init__, docstring)
     init_arguments["arguments"].pop("self", None)
 
     methods = {}
@@ -143,7 +161,7 @@ def get_class_conpyguration(cls: Any, docstring: str = None) -> ClassSpec:
             continue
 
         if inspect.isfunction(method):
-            config = get_conpyguration(method)
+            config = get_function_conpyguration(method)
             config["arguments"].pop("self", None)
             config["function_name"] = class_name + "." + name
             methods[name] = config

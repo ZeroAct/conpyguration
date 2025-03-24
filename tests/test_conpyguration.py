@@ -1,9 +1,6 @@
-import inspect
 from typing import Literal, Union
 
-import pytest
-
-from conpyguration.conpy import get_class_conpyguration, get_conpyguration
+from conpyguration.conpy import get_conpyguration
 from conpyguration.types import UNDEFINED
 
 
@@ -207,7 +204,7 @@ def test_get_conpyguration_with_annotations_and_docstrings():
 
 
 def test_get_class_conpyguration_nothing():
-    conpyguration = get_class_conpyguration(DummyClassNothing)
+    conpyguration = get_conpyguration(DummyClassNothing)
     assert conpyguration == {
         "description": UNDEFINED,
         "module_name": "test_conpyguration",
@@ -226,7 +223,7 @@ def test_get_class_conpyguration_nothing():
 
 
 def test_get_class_conpyguration_with_annotations():
-    conpyguration = get_class_conpyguration(DummyClassWithAnnotations)
+    conpyguration = get_conpyguration(DummyClassWithAnnotations)
     assert conpyguration.get("description") == UNDEFINED
     assert conpyguration.get("module_name") == "test_conpyguration"
     assert conpyguration.get("class_name") == "DummyClassWithAnnotations"
@@ -285,7 +282,7 @@ def test_get_class_conpyguration_with_annotations():
 
 
 def test_get_class_conpyguration_with_annotations_and_docstrings():
-    conpyguration = get_class_conpyguration(DummyClassWithAnnotationsAndDocstrings)
+    conpyguration = get_conpyguration(DummyClassWithAnnotationsAndDocstrings)
     assert conpyguration.get("description") == "A dummy class with annotations and docstrings"
     assert conpyguration.get("module_name") == "test_conpyguration"
     assert conpyguration.get("class_name") == "DummyClassWithAnnotationsAndDocstrings"
