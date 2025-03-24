@@ -40,9 +40,9 @@ class FunctionSpec(TypedDict):
     """A class to represent the specification of a function
 
     Attributes:
-        name (str): The name of the function.
         description (str): A description of the function.
         module_name (str): The name of the module containing the function.
+        function_name (str): The name of the function.
         arguments (dict[str, ArgumentSpec | list[dict[str, ArgumentSpec]] | list[ArgumentSpec]]): A dictionary mapping argument names to their specifications.
         return_type (ReturnSpec): The specification of the return value of the function.
     """
@@ -52,3 +52,21 @@ class FunctionSpec(TypedDict):
     function_name: str
     arguments: dict[str, ArgumentSpec]
     return_spec: ReturnSpec
+
+
+class ClassSpec(TypedDict):
+    """A class to represent the specification of a class
+
+    Attributes:
+        description (str): A description of the class.
+        module_name (str): The name of the module containing the class.
+        class_name (str): The name of the class.
+        init_arguments (dict[str, ArgumentSpec]): A dictionary mapping argument names to their specifications
+        methods (dict[str, FunctionSpec]): A dictionary mapping method names to their specifications.
+    """
+
+    description: str
+    module_name: str
+    class_name: str
+    init_arguments: dict[str, ArgumentSpec]
+    methods: dict[str, FunctionSpec]
