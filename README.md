@@ -129,4 +129,59 @@ get_conpyguration(my_function)
 ```
 
 ### Class
-Coming soon...
+```python
+from conpyguration import get_class_conpyguration
+
+class MyClass:
+    """My Sample Class
+
+    Args:
+        a (int): The first number.
+        b (int, optional): The second number. Defaults to 1.
+    """
+
+    def __init__(self, a: int, b: int=1):
+        self.a = a
+        self.b = b
+
+    def add(self) -> int:
+        """Add the two numbers together.
+
+        Returns:
+            int: The sum of the two numbers.
+        """
+        return self.a + self.b
+
+get_class_conpyguration(MyClass)
+# {
+#     'description': 'My Sample Class',
+#     'module_name': '__main__',
+#     'class_name': 'MyClass',
+#     'init_arguments': {
+#         'a': {
+#             'value_type': <class 'int'>,
+#             'default': <class 'conpyguration.types.UNDEFINED'>,
+#             'description': 'The first number.',
+#             'choices': <class 'conpyguration.types.UNDEFINED'>
+#         },
+#         'b': {
+#             'value_type': <class 'int'>,
+#             'default': 1,
+#             'description': 'The second number. Defaults to 1.',
+#             'choices': <class 'conpyguration.types.UNDEFINED'>
+#         }
+#     },
+#     'methods': {
+#         'add': {
+#             'description': 'Add the two numbers together.',
+#             'module_name': '__main__',
+#             'function_name': 'MyClass.add',
+#             'arguments': {},
+#             'return_spec': {
+#                 'value_type': <class 'int'>,
+#                 'description': 'The sum of the two numbers.'
+#             }
+#         }
+#     }
+# }
+```
