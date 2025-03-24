@@ -1,4 +1,6 @@
 # ConPYguration
+[![ci](https://github.com/ZeroAct/conpyguration/actions/workflows/ci.yaml/badge.svg)](https://github.com/ZeroAct/conpyguration/actions/workflows/ci.yaml)
+
 Configure your Python function or class with ConPYguration. ConPYguration is a Python library that allows you to easily configure your Python functions or classes with a configuration file or `Dictionary`.
 
 ## Installation
