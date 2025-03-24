@@ -1,6 +1,7 @@
 version = "0.1.0"
 
 from .conpy import get_class_conpyguration, get_conpyguration, parse_type
+from .storage import storage
 from .types import (
     UNDEFINED,
     ArgumentSpec,
@@ -18,4 +19,5 @@ __all__ = [
     "get_conpyguration",
     "get_class_conpyguration",
     "parse_type",
+    "storage",
 ]
