@@ -6,6 +6,7 @@ import docstring_parser
 from conpyguration.types import (
     UNDEFINED,
     ArgumentSpec,
+    ClassSpec,
     FunctionSpec,
     ReturnSpec,
 )
@@ -51,11 +52,12 @@ def parse_type(value_type: type) -> Union[type, tuple, list]:
     return value_type
 
 
-def get_conpyguration(func: Any) -> FunctionSpec:
+def get_conpyguration(func: Any, docstring: str = None) -> FunctionSpec:
     """Get the conpyguration of a function or class
 
     Args:
         func (Any): The function or class to get the conpyguration of
+        docstring (str): The docstring of the function or class
 
     Returns:
         FunctionSpec: The conpyguration of the function or class
@@ -64,7 +66,7 @@ def get_conpyguration(func: Any) -> FunctionSpec:
         raise TypeError("The input should be a function or a class")
 
     signature = inspect.signature(func)
-    docstring = func.__doc__ or UNDEFINED
+    docstring = docstring or func.__doc__ or UNDEFINED
     docstring_parse = docstring_parser.parse(docstring) if docstring != UNDEFINED else UNDEFINED
 
     docstring_short_description = (
@@ -111,4 +113,45 @@ def get_conpyguration(func: Any) -> FunctionSpec:
         function_name=func.__name__ if hasattr(func, "__name__") else UNDEFINED,
         arguments=arguments,
         return_spec=return_spec,
+    )
+
+
+def get_class_conpyguration(cls: Any, docstring: str = None) -> ClassSpec:
+    """Get the conpyguration of a class
+
+    Args:
+        cls (Any): The class to get the conpyguration of
+        docstring (str): The docstring of the class
+
+    Returns:
+        ClassSpec: The conpyguration of the class
+    """
+    if not inspect.isclass(cls):
+        raise TypeError("The input should be a class")
+
+    module_name = cls.__module__ if hasattr(cls, "__module__") else UNDEFINED
+    class_name = cls.__name__ if hasattr(cls, "__name__") else UNDEFINED
+
+    docstring = docstring or cls.__doc__ or cls.__init__.__doc__ or UNDEFINED
+
+    init_arguments = get_conpyguration(cls.__init__, docstring)
+    init_arguments["arguments"].pop("self", None)
+
+    methods = {}
+    for name, method in cls.__dict__.items():
+        if name.startswith("__"):
+            continue
+
+        if inspect.isfunction(method):
+            config = get_conpyguration(method)
+            config["arguments"].pop("self", None)
+            config["function_name"] = class_name + "." + name
+            methods[name] = config
+
+    return ClassSpec(
+        description=init_arguments["description"],
+        module_name=module_name,
+        class_name=class_name,
+        init_arguments=init_arguments["arguments"],
+        methods=methods,
     )
