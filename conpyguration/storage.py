@@ -1,22 +1,24 @@
 from collections import OrderedDict
-from typing import Any
+from typing import Generic, TypeVar
 
 store = OrderedDict()
 
+T = TypeVar("T", dict)
 
-class Storage:
-    def add_item(self, key: str, item: Any) -> Any:
+
+class Storage(Generic[T]):
+    def add_item(self, key: str, item: T) -> T:
         if key in store:
             raise KeyError(f"Key {key} already exists")
         store[key] = item
         return item
 
-    def get_item(self, key: str) -> Any:
+    def get_item(self, key: str) -> T:
         if key not in store:
             raise KeyError(f"Key {key} does not exist")
         return store[key]
 
-    def remove_item(self, key: str) -> Any:
+    def remove_item(self, key: str) -> T:
         if key not in store:
             raise KeyError(f"Key {key} does not exist")
         return store.pop(key)
@@ -33,7 +35,8 @@ class Storage:
     def __iter__(self):
         return iter(store)
 
+    def __contains__(self, key: str) -> bool:
+        return key in store
 
-storage = Storage()
 
-__all__ = ["storage"]
+__all__ = ["Storage"]
