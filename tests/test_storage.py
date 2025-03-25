@@ -1,4 +1,6 @@
-from conpyguration import storage
+from conpyguration.storage import Storage
+
+storage = Storage[dict]()
 
 
 def test_storage():
@@ -13,6 +15,10 @@ def test_storage():
     storage.add_item("key2", "value")
     assert len(storage) == 2
     assert storage.get_keys() == ["key1", "key2"]
+
+    assert "key1" in storage
+    assert "key2" in storage
+    assert "key3" not in storage
 
     storage.remove_item("key1")
     assert len(storage) == 1

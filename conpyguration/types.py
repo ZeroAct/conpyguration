@@ -70,3 +70,19 @@ class ClassSpec(TypedDict):
     class_name: str
     init_arguments: dict[str, ArgumentSpec]
     methods: dict[str, FunctionSpec]
+
+
+class FunctionCallSpec(TypedDict):
+    """A class to represent the specification of a function call
+
+    Attributes:
+        module_name (str): The name of the module containing the function.
+        function_name (str): The name of the function.
+        arguments (dict[str, Any]): A dictionary mapping argument names to their values.
+        called_at (str): The time the function was called.
+    """
+
+    module_name: str
+    function_name: str
+    arguments: dict[str, Any]
+    called_at: str
